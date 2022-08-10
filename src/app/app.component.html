@@ -1,7 +1,7 @@
 <mat-card class="card">
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Number</mat-label>
+      <mat-label>Cats</mat-label>
       <input type="text"
              placeholder="Pick one"
              aria-label="Number"
@@ -13,25 +13,21 @@
           {{option}}
         </mat-option>
       </mat-autocomplete>
+      <button mat-button (click)="search()">Search</button>
+
     </mat-form-field>
   </form>
 </mat-card>
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>Лайк</button>
-    <button mat-button>Хуета</button>
-  </mat-card-actions>
-</mat-card>
+<div style="display: flex;flex-wrap:wrap;justify-content: center;">
+
+  <mat-card class="example-card" *ngFor="let item of breedsCollection;">
+    <mat-card-header>
+      <mat-card-title>{{item.name}}</mat-card-title>
+    </mat-card-header>
+    <img *ngIf="item.url" mat-card-image src="{{item.url}}" alt="Photo of a Shiba Inu">
+    
+    <mat-card-actions>
+      <button mat-button>Like</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
